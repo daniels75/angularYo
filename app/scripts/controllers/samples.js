@@ -12,7 +12,9 @@ mainModule
       'Karma'
     ];
   });
-
+mainModule.controller('SampleTestCtrl', function ($scope) {
+  $scope.sampleTestText = "Sample Test";
+});
 //angular.module('myModule');
 
 mainModule
