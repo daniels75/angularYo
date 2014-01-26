@@ -12,9 +12,80 @@ mainModule
       'Karma'
     ];
   });
-mainModule.controller('SampleTestCtrl', function ($scope) {
-  $scope.sampleTestText = "Sample Test";
+mainModule.controller('SampleTextCtrl', function ($scope) {
+  $scope.sampleText = "Sample Test";
 });
+
+mainModule.controller('ExpressionCtrl',
+[
+  '$scope', '$parse', function ($scope, $parse) {
+    $scope.$watch('expr', function(newVal, oldVal, scope){
+      if(newVal !== oldVal){
+        // Let's set up our parseFun with the expression
+        var parseFun = $parse(newVal);
+        // Get the value of the parsed expression
+        $scope.parsedValue = parseFun(scope);
+        console.log($scope.parsedValue);
+      }
+    });
+  }
+]
+);
+//angular.module('angularYoApp', ['emailParser']);
+
+mainModule
+/*
+.config(['$interpolateProvider',
+  function($interpolateProvider) {
+    $interpolateProvider.startSymbol('__');
+    $interpolateProvider.endSymbol('__');
+  }
+]
+)
+*/
+.factory('EmailParser', ['$interpolate',
+  function($interpolate){
+    // a service to handle parsing
+    return {
+      parse: function(text, context) {
+        var template = $interpolate(text);
+        return template(context);
+      }
+    }
+  }
+]);
+
+mainModule.controller('EmailCtrl',
+[
+  '$scope', 'EmailParser', function($scope, EmailParser) {
+      // Set up a watch
+      $scope.$watch('emailBody', function(body){
+          if (body){
+            $scope.previewText = EmailParser.parse(body, {
+              email: $scope.to
+            });
+          }
+      });
+
+  }
+]
+);
+
+mainModule.controller('ClockCtrl', function($scope) {
+  $scope.clock = {
+    now: new Date()
+  };
+  var updateClock = function(){
+    $scope.clock.now = new Date();
+  };
+
+  setInterval(function(){ 
+    $scope.$apply(updateClock);
+  }, 1000);
+
+  updateClock();
+});
+
 //angular.module('myModule');
 
 mainModule

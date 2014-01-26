@@ -11,9 +11,31 @@
 
 <div class="row marketing">
   <h4>Angular Samples</h4>
-  <p>
-    Samples
+  <p ng-controller="SampleTextCtrl">
+    Samples {{sampleText}}
   </p>
+  <div ng-controller="ClockCtrl">
+    Clock: {{clock.now}}
+  </div>
+
+  <div ng-controller="ExpressionCtrl">
+    <input ng-model="expr" type="text" placeholder="Enter an expression" />
+    <h2>Parsed value: {{ parsedValue }}</h2>
+  </div>
+
+  <div ng-controller="EmailCtrl">
+
+    <div id="emailEditor">
+      <input ng-model="to" type="email" placeholder="Recipient" />
+      <textarea ng-model="emailBody"></textarea>
+    </div>
+    <div id="emailPreview">
+      <pre>{{ previewText }}</pre>
+    </div>
+
+  </div>
+
+
 <div ng-app="angularYoApp" ng-controller="mySampleCtr">
   <div class="well">
       <form>
@@ -33,5 +55,5 @@
   
 </div>
 <div class="footer">
-  <p>♥ from the Yeoman team</p>
+  <p>♥ from the Yeoman team </p>
 </div>

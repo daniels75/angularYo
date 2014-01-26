@@ -20,6 +20,7 @@ module.exports = function(config) {
       'app/bower_components/angular-bootstrap/ui-bootstrap.js',
       'app/scripts/*.js',
       'app/scripts/**/*.js',
+      'app/scripts/samples/*.js',
       'test/mock/**/*.js',
       'test/spec/**/*.js'
     ],
@@ -52,6 +53,6 @@ module.exports = function(config) {
 
     // Continuous Integration mode
     // if true, it capture browsers, run tests and exit
-    singleRun: false
+    singleRun: true
   });
 };
