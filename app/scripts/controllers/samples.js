@@ -104,3 +104,15 @@ mainModule
 
 mainModule.service('notificationsService', NotificationsService)
   .value('notificationsArchive', new NotificationsArchive());
+
+
+// filters
+
+mainModule.filter('capitalizeleter', function() {
+  return function(input){
+    // input will be the string we pass in
+    if (input){
+      return input[0].toUpperCase() + input.slice(1);
+    }
+  }
+});

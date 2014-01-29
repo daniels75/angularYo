@@ -53,6 +53,37 @@
   </table>
 </div>
   
+<div>
+  <input ng-model="textforfilter" type="text" />
+  {{textforfilter | lowercase | capitalizeleter}}
+</div>
+
+<div>
+  <form name = "emailform" >
+      <label name="email">Your email</label>
+      <input type="email" name="email" ng-model="email" placeholder="Email Address" />   
+  </form>
+</div>
+
+
+</br></br>
+
+<form name="myForm22" >
+  Single word: <input type="text" name="input22" ng-model="text" ng-minlength=3 
+  ng-maxlength=4 />
+  <span class="error" ng-show="myForm.input.$error.required">
+    Required!</span>
+  <span class="error" ng-show="myForm.input.$error.pattern">
+    Single word only!</span>
+
+  <tt>text = {{text}}</tt><br/>
+  <tt>myForm22.input22.$valid = {{myForm22.input22.$valid}}</tt><br/>
+  <tt>myForm22.input22.$error = {{myForm22.input22.$error}}</tt><br/>
+  <tt>myForm22.$valid = {{myForm22.$valid}}</tt><br/>
+  <tt>myForm22.$error.required = {{!!myForm22.$error.required}}</tt><br/>
+ </form>
+
+
 </div>
 <div class="footer">
   <p>♥ from the Yeoman team </p>
